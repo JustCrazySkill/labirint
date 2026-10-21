@@ -3,18 +3,17 @@
 
 #include <string>
 
-// Размеры и символы отображения лабиринта
 namespace Config {
-    const int WIDTH = 10;                     // Ширина сетки
-    const int HEIGHT = 10;                    // Высота сетки
+    const int WIDTH = 10;
+    const int HEIGHT = 10;
 
-    const char WALL = '#';                    // Стена
-    const char PATH = ' ';                    // Проход
-    const char START = 'S';                   // Старт (слева)
-    const char FINISH = 'F';                  // Финиш (справа)
-    const char PLAYER = 'P';                  // Игрок
+    const char WALL = '#';
+    const char PATH = ' ';
+    const char START = 'S';
+    const char FINISH = 'F';
+    const char PLAYER = 'P';
 
-    const std::string STATS_FILE = "stats.txt"; // Имя файла статистики
+    const std::string STATS_FILE = "stats.txt";
 }
 
 #endif
