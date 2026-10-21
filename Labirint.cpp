@@ -21,7 +21,6 @@ void Labirint::clearGrid() {
 void Labirint::init(const std::string& seedStr) {
     clearGrid();
 
-
     unsigned int seedValue;
     if (seedStr == "r" || seedStr == "R") {
         seedValue = static_cast<unsigned int>(time(nullptr));
@@ -31,14 +30,12 @@ void Labirint::init(const std::string& seedStr) {
     }
     srand(seedValue);
 
-    // Точка старта на левой границе
     startX = 0;
     startY = rand() % (height - 2) + 1;
 
     playerX = startX;
     playerY = startY;
 
-    // Генерируем путь
     generatePath();
 
     grid[startX][startY] = Config::START;
@@ -52,7 +49,7 @@ void Labirint::generatePath() {
     grid[curX][curY] = Config::PATH;
 
     while (curX < width - 1) {
-        int dir = rand() % 3; // 0 - Вправо, 1 - Вверх, 2 - Вниз
+        int dir = rand() % 3;
 
         if (dir == 0) {
             curX++;
@@ -107,9 +104,6 @@ void Labirint::draw() const {
     }
 }
 
-// ==========================================================
-// ТОЧКА ВХОДА В ПРОГРАММУ (Главная функция main)
-// ==========================================================
 int main() {
     cout << "=== Labirint C++ ===\n";
     cout << "Games count: " << getGamesPlayed() << "\n\n";
