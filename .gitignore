@@ -1,0 +1,9 @@
+*.exe
+*.obj
+*.o
+*.out
+*~
+*.swp
+.vscode/
+.geany/
+stats.txt
