@@ -1,5 +1,4 @@
-#ifndef LABIRINT_H
-#define LABIRINT_H
+﻿#pragma once
 
 #include <vector>
 #include <string>
@@ -27,4 +26,3 @@ public:
     bool isFinished() const;
 };
 
-#endif

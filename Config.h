@@ -1,5 +1,4 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+﻿#pragma once
 
 #include <string>
 
@@ -16,4 +15,3 @@ namespace Config {
     const std::string STATS_FILE = "stats.txt";
 }
 
-#endif
