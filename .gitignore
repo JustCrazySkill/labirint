@@ -6,4 +6,10 @@
 *.swp
 .vscode/
 .geany/
+.vs/
+x64/
+Debug/
+Release/
+*.suo
+*.user
 stats.txt
