@@ -102,17 +102,22 @@ void Labirint::draw() const {
         }
         cout << '\n';
     }
+    cout.flush();
 }
 
 int main() {
     cout << "=== Labirint C++ ===\n";
     cout << "Games count: " << getGamesPlayed() << "\n\n";
 
+    cout << "Field size:  1 - 10x10,  2 - 15x15,  3 - 20x20\n";
+    int choice = readSafeMenuChoice(1, 3);
+    int size = (choice == 1) ? 10 : (choice == 2) ? 15 : 20;
+
     string seed;
     cout << "Seed(r - random): ";
     cin >> seed;
 
-    Labirint lab;
+    Labirint lab(size, size);
     lab.init(seed);
 
     char input;
@@ -125,12 +130,15 @@ int main() {
 
         cout << "\n";
         cin >> input;
+        if (!cin) break;
 
         lab.movePlayer(input);
     }
 
-    cout << "\nSucces\n";
-    saveGameSession(seed);
+    if (lab.isFinished()) {
+        cout << "\nSucces\n";
+        saveGameSession(seed);
+    }
 
     return 0;
 }
