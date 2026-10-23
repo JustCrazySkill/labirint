@@ -17,6 +17,7 @@ private:
 
     void clearGrid();
     void generatePath();
+    bool isNumber(const std::string& s) const;
 
 public:
     Labirint(int w = Config::WIDTH, int h = Config::HEIGHT);

@@ -18,17 +18,31 @@ void Labirint::clearGrid() {
     }
 }
 
+bool Labirint::isNumber(const string& s) const {
+    if (s.size() > 9) {
+        return false;
+    }
+    for (char c : s) {
+        if (c < '0' || c > '9') {
+            return false;
+        }
+    }
+    return true;
+}
+
 void Labirint::init(const std::string& seedStr) {
     clearGrid();
 
     unsigned int seedValue;
     if (seedStr == "r" || seedStr == "R") {
-        seedValue = static_cast<unsigned int>(time(nullptr));
-    } else if (seedStr.find_first_not_of("0123456789") == string::npos && seedStr.size() <= 9) {
-        seedValue = static_cast<unsigned int>(stoul(seedStr));
+        seedValue = time(0);
+    } else if (isNumber(seedStr)) {
+        seedValue = stoi(seedStr);
     } else {
         seedValue = 0;
-        for (char c : seedStr) seedValue += static_cast<unsigned int>(c);
+        for (char c : seedStr) {
+            seedValue += c;
+        }
     }
     srand(seedValue);
     lastSeed = seedValue;
@@ -136,7 +150,7 @@ int main() {
     while (!lab.isFinished()) {
         system("cls");
 
-        std::cout << "controls - WASD\n\n";
+        cout << "controls - WASD\n\n";
 
         lab.draw();
 
