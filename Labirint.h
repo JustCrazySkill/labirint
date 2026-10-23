@@ -13,6 +13,7 @@ private:
     int startX, startY;
     int finishX, finishY;
     int playerX, playerY;
+    unsigned int lastSeed;
 
     void clearGrid();
     void generatePath();
@@ -24,5 +25,6 @@ public:
     void draw() const;
     bool movePlayer(char direction);
     bool isFinished() const;
+    unsigned int getSeedValue() const;
 };
 

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Labirint::Labirint(int w, int h) : width(w), height(h) {
+Labirint::Labirint(int w, int h) : width(w), height(h), lastSeed(0) {
     grid.resize(width, vector<char>(height, Config::WALL));
 }
 
@@ -24,11 +24,14 @@ void Labirint::init(const std::string& seedStr) {
     unsigned int seedValue;
     if (seedStr == "r" || seedStr == "R") {
         seedValue = static_cast<unsigned int>(time(nullptr));
+    } else if (seedStr.find_first_not_of("0123456789") == string::npos && seedStr.size() <= 9) {
+        seedValue = static_cast<unsigned int>(stoul(seedStr));
     } else {
         seedValue = 0;
         for (char c : seedStr) seedValue += static_cast<unsigned int>(c);
     }
     srand(seedValue);
+    lastSeed = seedValue;
 
     startX = 0;
     startY = rand() % (height - 2) + 1;
@@ -91,6 +94,10 @@ bool Labirint::isFinished() const {
     return (playerX == finishX && playerY == finishY);
 }
 
+unsigned int Labirint::getSeedValue() const {
+    return lastSeed;
+}
+
 void Labirint::draw() const {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
@@ -120,6 +127,11 @@ int main() {
     Labirint lab(size, size);
     lab.init(seed);
 
+    string seedLog = seed;
+    if (seed == "r" || seed == "R") {
+        seedLog = seed + " (" + to_string(lab.getSeedValue()) + ")";
+    }
+
     char input;
     while (!lab.isFinished()) {
         system("cls");
@@ -137,7 +149,7 @@ int main() {
 
     if (lab.isFinished()) {
         cout << "\nSucces\n";
-        saveGameSession(seed);
+        saveGameSession(seedLog);
     }
 
     return 0;
