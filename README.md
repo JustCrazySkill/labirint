@@ -4,6 +4,8 @@
 
 **Стек:** C++17 · STL (`vector`, `fstream`) · Git/GitHub · g++ (MinGW) або Visual Studio 2022
 
+![Скріншот гри](screenshot.png)
+
 ---
 
 ## 🎯 Мета та опис проєкту
